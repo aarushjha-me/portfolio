@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarush Jha - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #3949ab;
+            --accent-color: #00acc1;
+            --light-color: #f5f5f5;
+            --dark-color: #121212;
+            --text-color: #333;
+            --text-light: #777;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Paper Link in Navigation */
+        .paper-nav-item {
+            background-color: #e3f2fd;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-left: 15px !important;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .paper-nav-item a {
+            color: var(--primary-color);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .paper-nav-item i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .paper-nav-item:hover {
+            background-color: #bbdefb;
+        }
+
+        .paper-nav-item a::after {
+            display: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 120px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .badge {
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge i {
+            color: var(--accent-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Experiences Section */
+        .experiences {
+            background-color: #f8f9fa;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .date {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            top: 20px;
+            transform: rotate(45deg);
+            box-shadow: 2px -2px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            background-color: white;
+            top: 20px;
+            transform: rotate(45deg);
+            box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Goals Section */
+        .goals-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .goal-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .goal-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .goal-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .goal-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .nav-links li {
+                margin-left: 18px;
+            }
+            
+            .paper-nav-item {
+                padding: 7px 12px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .paper-nav-item {
+                display: none;
+            }
+            
+            .paper-nav-mobile {
+                display: block !important;
+                background-color: #e3f2fd;
+                padding: 12px 0;
+                text-align: center;
+                margin-top: 80px;
+                border-bottom: 1px solid #bbdefb;
+            }
+            
+            .paper-nav-mobile a {
+                color: var(--primary-color);
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .paper-nav-mobile i {
+                color: var(--accent-color);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: white;
+                text-align: center;
+                transition: 0.5s;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+            }
+            
+            .paper-nav-item {
+                display: block;
+                margin: 15px auto !important;
+                width: 80%;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+            
+            .paper-nav-mobile {
+                margin-top: 70px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+        }
+        
+        /* Paper link for mobile - hidden on desktop */
+        .paper-nav-mobile {
+            display: none;
+        }
+        
+        /* Book section style */
+        .book-section {
+            background-color: #f0f7ff;
+            padding: 40px 0;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+        
+        .book-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .book-icon {
+            font-size: 4rem;
+            color: var(--accent-color);
+        }
+        
+        .book-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .book-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Aarush <span>Jha</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#experiences">My Journey</a></li>
+                    <li><a href="#goals">Goals & Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <!-- Paper link in navigation -->
+                    <li class="paper-nav-item">
+                        <a href="https://independent.academia.edu/AarushJha10" target="_blank" id="paper-link-nav">
+                            <i class="fas fa-book"></i>
+                            <span>My Published Paper</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+        <!-- Paper link for mobile view -->
+        <div class="paper-nav-mobile">
+            <a href="https://independent.academia.edu/AarushJha10" target="_blank" id="paper-link-mobile">
+                <i class="fas fa-book"></i>
+                <span>My Published Book on Academia.edu</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Aarush Jha</h1>
+                <h2>9th Grade Student & Aspiring Aerospace Engineer</h2>
+                <p>Welcome to my portfolio! I'm passionate about science, robotics, programming, and exploring the mysteries of the universe. I recently published my first research paper on the life cycle of the universe and I'm working towards my goal of becoming an aerospace engineer.</p>
+                <a href="#about" class="btn">Learn More About Me</a>
+                
+                <div class="hero-badges">
+                    <div class="badge"><i class="fas fa-rocket"></i> Aerospace Enthusiast</div>
+                    <div class="badge"><i class="fas fa-robot"></i> Robotics Club Member</div>
+                    <div class="badge"><i class="fas fa-code"></i> C++ & Python Programmer</div>
+                    <div class="badge"><i class="fas fa-atom"></i> Physics & Chemistry Lover</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a 9th grade student with a deep passion for science and technology. My journey began with robotics in 7th grade, where I learned about Arduino, motors, and building RC cars. This sparked my interest in electronics and programming.</p>
+                    <p>Academically, I've transformed from being an average student to an above-average one, especially excelling in mathematics and physics. I believe in learning through practical projects and hands-on experience.</p>
+                    <p>Beyond academics, I enjoy badminton and have participated in various extracurricular activities. I'm currently working on improving my programming skills in C++ and Python, and I'm saving up for an ESP32 or Node MCU for my electronics projects.</p>
+                    
+                    <h3 style="margin-top: 30px; color: var(--primary-color);">My Skills</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">Arduino Programming</div>
+                        <div class="skill-item">Circuit Design</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">C++ Basics</div>
+                        <div class="skill-item">Physics Concepts</div>
+                        <div class="skill-item">Mathematics</div>
+                        <div class="skill-item">Robotics</div>
+                        <div class="skill-item">Research Writing</div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder for your image -->
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Student working on science project">
+                </div>
+            </div>
+            
+            <!-- Book Section -->
+            <div class="book-section">
+                <div class="container">
+                    <div class="book-content">
+                        <div class="book-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="book-info">
+                            <h3>My Published Book</h3>
+                            <p>I have published my work on Academia.edu. You can read my research and papers on my Academia profile.</p>
+                            <a href="https://independent.academia.edu/AarushJha10" target="_blank" class="btn" style="background-color: var(--accent-color); margin-top: 10px;">
+                                <i class="fas fa-external-link-alt"></i> View on Academia.edu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Journey</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Early Years & E.C.A Selection</h3>
+                        <span class="date">Until 5th Grade</span>
+                        <p>Had limited E.C.A options (Karate, Taekwondo, Wushu) and chose Karate. Developed early interest in martial arts and discipline.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Table Tennis & New Opportunities</h3>
+                        <span class="date">6th Grade</span>
+                        <p>Chose Table Tennis among various new options. Developed coordination skills but eventually left due to the coaching style.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Robotics Club Beginnings</h3>
+                        <span class="date">7th Grade</span>
+                        <p>Instantly joined the new Robotics Club. Learned about Arduino, motors, gear-powered torque, and built RC cars with wired controls using DPDT switches. My passion for electronics truly began here.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>ESP32 & Advanced Projects</h3>
+                        <span class="date">8th Grade</span>
+                        <p>Learned about ESP32, repeated some projects, and spent time on journals. School changes limited drone projects, but I continued learning.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Transition & New Interests</h3>
+                        <span class="date">9th Grade</span>
+                        <p>Left robotics and joined Badminton. Started focusing more on coding with Python and C++. Published my first research paper on the universe's life cycle on December 5, 2025.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals" class="goals">
+        <div class="container">
+            <div class="section-title">
+                <h2>Goals & Projects</h2>
+            </div>
+            <div class="goals-container">
+                <div class="goal-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Become an Aerospace Engineer</h3>
+                    <p>My primary career goal is to work in aerospace engineering, designing spacecraft and exploring space technology.</p>
+                </div>
+                <div class="goal-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>ESP32/Node MCU Projects</h3>
+                    <p>Currently collecting money to buy an ESP32 or Node MCU for advanced electronics and IoT projects.</p>
+                </div>
+                <div class="goal-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Build Drones & Submarines</h3>
+                    <p>I want to move beyond simulations in TinkerCAD and build actual drones and submarines with proper hardware.</p>
+                </div>
+                <div class="goal-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Publish More Research</h3>
+                    <p>After my first paper on the universe's life cycle, I plan to write and publish more blogs and research papers throughout the year.</p>
+                </div>
+                <div class="goal-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Master C++ for 3D Graphics</h3>
+                    <p>I want to learn C++ thoroughly to create 3D graphics applications, which requires a better computer with a graphics card.</p>
+                </div>
+                <div class="goal-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Academic Excellence</h3>
+                    <p>Continue improving my academic performance, especially in science and mathematics, to prepare for engineering studies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aarush Jha</h3>
+                    <p>9th Grade Student, Aspiring Aerospace Engineer, and Researcher. Passionate about science, technology, and understanding the universe.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/aarushjha-me" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWrRmVXGTZdszJbglFfhXmMVKSJhbWKvrfXptSMKzmXWDhKMZtrfVDmDQTTCPjcxLVmfTWrlv" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.instagram.com/aarush.me1" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tinkercad.com/users/8jUJVkdEk6C" target="_blank" title="Tinkercad">
+                            <i class="fas fa-cube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="#home">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#about">About Me</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#experiences">My Journey</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#goals">Goals & Projects</a></li>
+                        <li style="margin-bottom: 10px;"><a href="https://independent.academia.edu/AarushJha10" target="_blank">My Published Book</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>My Research</h3>
+                    <p>I published my first paper "The Life Cycle of the Universe" on December 5, 2025. This marks the beginning of my research journey.</p>
+                    <a href="https://independent.academia.edu/AarushJha10" target="_blank" class="btn" style="margin-top: 15px; background-color: var(--accent-color);">
+                        <i class="fas fa-external-link-alt"></i> View My Publications
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Aarush Jha. All Rights Reserved.</p>
+                <p style="margin-top: 5px;">9th Grade Student | Future Aerospace Engineer</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Paper link interaction
+        const paperLinkNav = document.getElementById('paper-link-nav');
+        const paperLinkMobile = document.getElementById('paper-link-mobile');
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add current year to footer if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearSpan = document.querySelector('.copyright p');
+            if(yearSpan) {
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2025', new Date().getFullYear());
+            }
+        });
+    </script>
+</body>
+</html>
